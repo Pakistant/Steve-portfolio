@@ -1,0 +1,126 @@
+@use '../../../styles/tokens' as *;
+
+.nav {
+  position: fixed;
+  inset-inline: 0;
+  top: 0;
+  z-index: 50;
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background 0.35s var(--ease), border-color 0.35s var(--ease);
+}
+
+.nav--scrolled {
+  background: rgba(12, 17, 32, 0.86);
+  backdrop-filter: blur(10px);
+  border-color: var(--line-soft);
+}
+
+.nav__shell {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  height: 74px;
+}
+
+.nav__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.02rem;
+  color: var(--text);
+  margin-right: auto;
+
+  em {
+    font-style: normal;
+    color: var(--gold);
+  }
+}
+
+.nav__links {
+  display: none;
+  gap: 1.9rem;
+
+  @media (min-width: 900px) {
+    display: flex;
+  }
+}
+
+.nav__link {
+  position: relative;
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  padding-block: 0.3rem;
+  transition: color 0.2s var(--ease);
+}
+
+.nav__link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: -2px;
+  height: 1.5px;
+  background: var(--gold);
+  transition: right 0.25s var(--ease);
+}
+
+.nav__link:hover {
+  color: var(--text);
+}
+
+.nav__link--active {
+  color: var(--text);
+}
+
+.nav__link--active::after {
+  right: 0;
+}
+
+.nav__cta {
+  display: none;
+
+  @media (min-width: 900px) {
+    display: inline-flex;
+  }
+}
+
+.nav__toggle {
+  background: none;
+  border: none;
+  color: var(--text);
+  display: inline-flex;
+  padding: 0.3rem;
+
+  @media (min-width: 900px) {
+    display: none;
+  }
+}
+
+.nav__mobile {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: var(--bg-raised);
+  border-top: 1px solid var(--line-soft);
+  padding: 0.5rem var(--gutter) 1.25rem;
+
+  a {
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--line-soft);
+    color: var(--text-muted);
+    font-size: 0.98rem;
+  }
+
+  .btn {
+    margin-top: 1rem;
+    justify-content: center;
+    border-bottom: none;
+  }
+
+  @media (min-width: 900px) {
+    display: none;
+  }
+}

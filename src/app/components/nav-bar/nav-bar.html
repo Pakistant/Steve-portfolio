@@ -1,0 +1,45 @@
+<header class="nav" [class.nav--scrolled]="scrolled()">
+  <div class="nav__shell shell">
+    <a class="nav__brand" href="#top">
+      <app-ring [size]="30" [progress]="72" [spin]="true" />
+      <span>
+        Steve<em>.</em>Douanla
+      </span>
+    </a>
+
+    <nav class="nav__links" aria-label="Navigation principale">
+      @for (link of links; track link.href) {
+        <a
+          [href]="'#' + link.href"
+          class="nav__link"
+          [class.nav__link--active]="active() === link.href"
+        >{{ link.label }}</a>
+      }
+    </nav>
+
+    <a class="btn btn--primary nav__cta" href="#contact">
+      Me contacter
+      <app-icon name="arrow" [size]="16" />
+    </a>
+
+    <button
+      class="nav__toggle"
+      type="button"
+      (click)="toggle()"
+      [attr.aria-expanded]="open()"
+      aria-controls="mobile-menu"
+      aria-label="Ouvrir le menu"
+    >
+      <app-icon [name]="open() ? 'close' : 'menu'" [size]="22" />
+    </button>
+  </div>
+
+  @if (open()) {
+    <nav id="mobile-menu" class="nav__mobile" aria-label="Navigation mobile">
+      @for (link of links; track link.href) {
+        <a [href]="'#' + link.href" (click)="close()">{{ link.label }}</a>
+      }
+      <a class="btn btn--primary" href="#contact" (click)="close()">Me contacter</a>
+    </nav>
+  }
+</header>

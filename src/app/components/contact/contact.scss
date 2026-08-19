@@ -1,0 +1,218 @@
+@use '../../../styles/tokens' as *;
+
+.contact__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2.5rem, 6vw, 3.5rem);
+
+  @media (min-width: 900px) {
+    grid-template-columns: 1.15fr 0.85fr;
+    align-items: start;
+  }
+}
+
+// ---- form ----------------------------------------------------------
+
+.contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  background: var(--bg-raised);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-m);
+  padding: clamp(1.5rem, 3vw, 2.2rem);
+}
+
+.contact__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  label {
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--text-faint);
+  }
+
+  input,
+  textarea {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    padding: 0.75rem 0.9rem;
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    resize: vertical;
+    transition: border-color 0.2s var(--ease);
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--text-faint);
+  }
+
+  input:focus,
+  textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+  }
+}
+
+.contact__input--error {
+  border-color: var(--clay) !important;
+}
+
+.contact__error {
+  font-size: 0.8rem;
+  color: var(--clay);
+}
+
+.contact__submit {
+  align-self: flex-start;
+  margin-top: 0.4rem;
+}
+
+.contact__hint {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  color: var(--text-faint);
+}
+
+.contact__sent {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.85rem;
+  color: var(--emerald-soft);
+  background: rgba(47, 143, 106, 0.12);
+  border: 1px solid rgba(111, 185, 155, 0.3);
+  border-radius: var(--radius-s);
+  padding: 0.65rem 0.9rem;
+}
+
+// ---- side column -----------------------------------------------------
+
+.contact__side {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.contact__channels {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.contact__channel {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--bg-raised);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-m);
+  padding: 1.1rem 1.3rem;
+}
+
+.contact__channel-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(111, 185, 155, 0.12);
+  color: var(--emerald-soft);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.contact__channel-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-faint);
+}
+
+.contact__channel-value {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+a.contact__channel-value:hover {
+  color: var(--gold-soft);
+}
+
+// ---- socials, deliberately distinct from the channel list ------------
+
+.contact__socials {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.contact__socials-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-faint);
+}
+
+.contact__socials-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.contact__social {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  background: var(--bg-raised-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  padding: 0.85rem 1.1rem;
+  color: var(--text);
+  transition: border-color 0.2s var(--ease), transform 0.2s var(--ease);
+
+  span {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  strong {
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  small {
+    margin-top: 0.1rem;
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    color: var(--text-faint);
+  }
+
+  app-icon:first-child {
+    color: var(--gold-soft);
+    flex-shrink: 0;
+  }
+
+  app-icon:last-child {
+    color: var(--text-faint);
+    flex-shrink: 0;
+  }
+
+  &:hover {
+    border-color: var(--gold);
+    transform: translateY(-2px);
+  }
+}

@@ -1,0 +1,52 @@
+// ---------------------------------------------------------------------------
+// Design tokens — Steve Tikemene Douanla / portfolio
+//
+// Concept: "la tournée" — the rotating order of a Cameroonian tontine (a
+// savings circle where every member takes their turn). Steve's own flagship
+// project, TontinePay, digitises exactly that idea. The whole site borrows
+// its visual grammar: sections are framed as a ledger of "tours" (rounds),
+// and the signature motif is a rotating arc/ring — used for the nav
+// indicator, the hero mark and the project cards — standing in for
+// progress, rotation and "someone's turn."
+// ---------------------------------------------------------------------------
+
+:root {
+  // Surface
+  --bg: #0c1120;
+  --bg-raised: #121a2e;
+  --bg-raised-2: #182238;
+  --line: #2a3350;
+  --line-soft: #1c2338;
+
+  // Text
+  --text: #f3f0e7;
+  --text-muted: #a9b1c6;
+  --text-faint: #6b7391;
+
+  // Accents
+  --gold: #e6a839;
+  --gold-soft: #f2c876;
+  --emerald: #2f8f6a;
+  --emerald-soft: #6fb99b;
+  --clay: #c96a4e;
+
+  // Type
+  --font-display: 'Space Grotesk', 'Segoe UI', sans-serif;
+  --font-body: 'Inter', 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+  // Layout
+  --max-w: 1160px;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --radius-s: 6px;
+  --radius-m: 14px;
+  --radius-l: 26px;
+
+  // Motion
+  --ease: cubic-bezier(.22, .8, .3, 1);
+}
+
+@media (prefers-color-scheme: light) {
+  // Site is intentionally single-theme (dark ledger aesthetic); we keep the
+  // same tokens regardless of OS preference so the identity stays intact.
+}

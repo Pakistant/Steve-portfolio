@@ -1,0 +1,64 @@
+<section id="top" class="hero">
+  <div class="hero__glow" aria-hidden="true"></div>
+
+  <div class="shell hero__grid">
+    <div class="hero__copy">
+      <p class="eyebrow">
+        <app-icon name="pin" [size]="14" />
+        Douala, Cameroun — ouvert aux missions
+      </p>
+
+      <h1 class="hero__title">
+        Steve Tikemene<br />Douanla
+      </h1>
+
+      <p class="hero__role">
+        <span class="hero__role-label">Actuellement</span>
+        <span class="hero__role-value">{{ currentRole() }}</span>
+      </p>
+
+      <p class="hero__lede">
+        Developpeur web forme en genie logiciel, je construis des produits
+        Angular modernes et des plateformes WordPress / Shopify sur mesure —
+        avec un interet particulier pour les outils numeriques qui repondent
+        a des besoins concrets au Cameroun et en zone CEMAC.
+      </p>
+
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="#projects">
+          Voir mes projets
+          <app-icon name="arrow" [size]="16" />
+        </a>
+        <a class="btn btn--ghost" href="assets/cv-steve-tikemene-douanla.pdf" download>
+          <app-icon name="download" [size]="16" />
+          Telecharger le CV
+        </a>
+      </div>
+
+      <dl class="hero__stats">
+        @for (stat of stats; track stat.label) {
+          <div class="hero__stat">
+            <dt>{{ stat.value }}</dt>
+            <dd>{{ stat.label }}</dd>
+          </div>
+        }
+      </dl>
+    </div>
+
+    <div class="hero__mark" aria-hidden="true">
+      <div class="hero__mark-ring">
+        <app-ring [size]="240" [progress]="72" [spin]="true" />
+        <div class="hero__mark-core">
+          <span class="hero__mark-kicker">Tour</span>
+          <span class="hero__mark-figure">2026</span>
+          <span class="hero__mark-kicker">ATL Cohort</span>
+        </div>
+      </div>
+
+      <span class="hero__chip hero__chip--1">Angular 22</span>
+      <span class="hero__chip hero__chip--2">Signals</span>
+      <span class="hero__chip hero__chip--3">WordPress</span>
+      <span class="hero__chip hero__chip--4">Laravel</span>
+    </div>
+  </div>
+</section>

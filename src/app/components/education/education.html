@@ -1,0 +1,28 @@
+<section id="education" class="section education">
+  <div class="shell">
+    <div class="section-head">
+      <p class="eyebrow">Formation</p>
+      <h2 class="section-title">Du BTS au Master, en genie logiciel</h2>
+    </div>
+
+    <div class="education__list">
+      @for (item of education; track item.title) {
+        <div class="education__row" [class.education__row--current]="item.current">
+          <div class="education__icon">
+            <app-icon name="cap" [size]="18" />
+          </div>
+          <div class="education__info">
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.school }}</p>
+          </div>
+          <div class="education__period">
+            {{ item.period }}
+            @if (item.current) {
+              <span class="tag">En cours</span>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

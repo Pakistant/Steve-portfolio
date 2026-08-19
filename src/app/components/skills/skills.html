@@ -1,0 +1,28 @@
+<section id="skills" class="section skills">
+  <div class="shell">
+    <div class="section-head">
+      <p class="eyebrow">Competences</p>
+      <h2 class="section-title">Une boite a outils large, un socle Angular</h2>
+      <p class="section-lede">
+        Du CMS a l'application sur mesure : de quoi couvrir un projet de bout
+        en bout, du cahier des charges a la mise en production.
+      </p>
+    </div>
+
+    <div class="skills__grid">
+      @for (group of groups; track group.title) {
+        <div class="skills__card">
+          <div class="skills__icon">
+            <app-icon [name]="group.icon" [size]="18" />
+          </div>
+          <h3>{{ group.title }}</h3>
+          <ul>
+            @for (item of group.items; track item) {
+              <li>{{ item }}</li>
+            }
+          </ul>
+        </div>
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,42 @@
+<section id="about" class="section about">
+  <div class="shell about__grid">
+    <div class="about__intro">
+      <p class="eyebrow">Profil</p>
+      <h2 class="section-title">
+        Construire des outils utiles,<br />pas seulement des ecrans.
+      </h2>
+      <p class="section-lede" style="margin-top: 1.1rem;">
+        Passe des CMS a Angular pour livrer des applications plus structurees,
+        je m'interesse a la fois au code propre et aux problemes concrets :
+        acces aux demarches administratives, epargne collective, commerce
+        artisanal. Chaque projet, professionnel ou personnel, part d'un
+        besoin reel avant d'etre une ligne de code.
+      </p>
+
+      <ul class="about__identity">
+        @for (item of identity; track item.label) {
+          <li>
+            <span class="about__identity-label">{{ item.label }}</span>
+            <span class="about__identity-value">{{ item.value }}</span>
+          </li>
+        }
+      </ul>
+    </div>
+
+    <div class="about__side">
+      <div class="about__card">
+        <h3>Atouts</h3>
+        <ul class="about__traits">
+          @for (trait of traits; track trait) {
+            <li>{{ trait }}</li>
+          }
+        </ul>
+      </div>
+
+      <div class="about__card about__card--interests">
+        <h3>Centres d'interet</h3>
+        <p>Lecture, sport, veille technologique et apprentissage continu de nouveaux langages.</p>
+      </div>
+    </div>
+  </div>
+</section>

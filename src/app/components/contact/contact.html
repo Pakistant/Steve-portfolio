@@ -1,0 +1,133 @@
+<section id="contact" class="section contact">
+  <div class="shell">
+    <div class="section-head">
+      <p class="eyebrow">Contact</p>
+      <h2 class="section-title">Discutons de votre prochaine tournee</h2>
+      <p class="section-lede">
+        Disponible pour des missions freelance, un poste de developpeur ou
+        une collaboration autour d'un projet produit. Reponse sous 48h.
+      </p>
+    </div>
+
+    <div class="contact__grid">
+      <form class="contact__form" [formGroup]="form" (ngSubmit)="submit()" novalidate>
+        <div class="contact__field">
+          <label for="name">Nom complet</label>
+          <input
+            id="name"
+            type="text"
+            formControlName="name"
+            placeholder="Votre nom"
+            [class.contact__input--error]="f.name.invalid && f.name.touched"
+          />
+          @if (f.name.invalid && f.name.touched) {
+            <span class="contact__error">Merci d'indiquer votre nom (2 caracteres minimum).</span>
+          }
+        </div>
+
+        <div class="contact__field">
+          <label for="email">Email</label>
+          <input
+            id="email"
+            type="email"
+            formControlName="email"
+            placeholder="vous&#64;exemple.com"
+            [class.contact__input--error]="f.email.invalid && f.email.touched"
+          />
+          @if (f.email.invalid && f.email.touched) {
+            <span class="contact__error">Merci d'indiquer une adresse email valide.</span>
+          }
+        </div>
+
+        <div class="contact__field">
+          <label for="subject">Sujet</label>
+          <input
+            id="subject"
+            type="text"
+            formControlName="subject"
+            placeholder="Objet de votre message"
+            [class.contact__input--error]="f.subject.invalid && f.subject.touched"
+          />
+          @if (f.subject.invalid && f.subject.touched) {
+            <span class="contact__error">Merci d'indiquer un sujet.</span>
+          }
+        </div>
+
+        <div class="contact__field">
+          <label for="message">Message</label>
+          <textarea
+            id="message"
+            rows="5"
+            formControlName="message"
+            placeholder="Decrivez votre projet ou votre besoin..."
+            [class.contact__input--error]="f.message.invalid && f.message.touched"
+          ></textarea>
+          @if (f.message.invalid && f.message.touched) {
+            <span class="contact__error">Le message doit contenir au moins 10 caracteres.</span>
+          }
+        </div>
+
+        <button type="submit" class="btn btn--primary contact__submit">
+          <app-icon name="send" [size]="16" />
+          Envoyer le message
+        </button>
+
+        <p class="contact__hint">
+          <app-icon name="mail" [size]="13" />
+          Ouvre votre client mail avec le message pre-rempli, a l'adresse stdouanla&#64;gmail.com.
+        </p>
+
+        @if (sent()) {
+          <p class="contact__sent">
+            <app-icon name="check" [size]="15" />
+            Votre client mail devrait s'ouvrir avec le message pret a etre envoye.
+          </p>
+        }
+      </form>
+
+      <div class="contact__side">
+        <div class="contact__channels">
+          @for (channel of channels; track channel.label) {
+            <div class="contact__channel">
+              <div class="contact__channel-icon">
+                <app-icon [name]="channel.icon" [size]="18" />
+              </div>
+              <div>
+                <span class="contact__channel-label">{{ channel.label }}</span>
+                @if (channel.href) {
+                  <a class="contact__channel-value" [href]="channel.href" target="_blank" rel="noopener">
+                    {{ channel.value }}
+                  </a>
+                } @else {
+                  <span class="contact__channel-value">{{ channel.value }}</span>
+                }
+              </div>
+            </div>
+          }
+        </div>
+
+        <div class="contact__socials">
+          <span class="contact__socials-label">Retrouvez-moi aussi</span>
+          <div class="contact__socials-list">
+            @for (social of socials; track social.label) {
+              <a
+                class="contact__social"
+                [href]="social.href"
+                target="_blank"
+                rel="noopener"
+                [attr.aria-label]="social.label"
+              >
+                <app-icon [name]="social.icon" [size]="19" />
+                <span>
+                  <strong>{{ social.label }}</strong>
+                  <small>{{ social.handle }}</small>
+                </span>
+                <app-icon name="external" [size]="14" />
+              </a>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

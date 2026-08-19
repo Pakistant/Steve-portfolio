@@ -1,0 +1,43 @@
+<section id="experience" class="section experience">
+  <div class="shell">
+    <div class="section-head">
+      <p class="eyebrow">Parcours</p>
+      <h2 class="section-title">Cinq postes, une meme constante : livrer</h2>
+      <p class="section-lede">
+        Du reseau local d'un cyber-cafe aux applications CRM sur mesure —
+        chaque etape a ajoute une couche de responsabilite.
+      </p>
+    </div>
+
+    <ol class="timeline">
+      @for (exp of experiences; track exp.org) {
+        <li class="timeline__item">
+          <div class="timeline__rail">
+            <span class="timeline__dot" [class.timeline__dot--current]="exp.current"></span>
+          </div>
+
+          <div class="timeline__body">
+            <div class="timeline__meta">
+              <span class="timeline__period">{{ exp.period }}</span>
+              @if (exp.current) {
+                <span class="tag timeline__badge">En cours</span>
+              }
+            </div>
+
+            <h3 class="timeline__role">{{ exp.role }}</h3>
+            <p class="timeline__org">
+              <app-icon name="briefcase" [size]="14" />
+              {{ exp.org }} — {{ exp.location }}
+            </p>
+
+            <ul class="timeline__points">
+              @for (point of exp.points; track point) {
+                <li>{{ point }}</li>
+              }
+            </ul>
+          </div>
+        </li>
+      }
+    </ol>
+  </div>
+</section>

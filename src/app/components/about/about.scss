@@ -1,0 +1,81 @@
+@use '../../../styles/tokens' as *;
+
+.about__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2.5rem, 6vw, 4rem);
+
+  @media (min-width: 900px) {
+    grid-template-columns: 1.3fr 0.9fr;
+  }
+}
+
+.about__identity {
+  margin-top: 2.2rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.1rem 1.5rem;
+  max-width: 460px;
+
+  li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid var(--line-soft);
+  }
+}
+
+.about__identity-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-faint);
+}
+
+.about__identity-value {
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.about__side {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.about__card {
+  background: var(--bg-raised);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-m);
+  padding: 1.6rem;
+
+  h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+}
+
+.about__traits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+
+  li {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    padding: 0.35rem 0.7rem;
+    border-radius: 999px;
+    background: var(--bg-raised-2);
+    border: 1px solid var(--line);
+    color: var(--text-muted);
+  }
+}
+
+.about__card--interests p {
+  color: var(--text-muted);
+  font-size: 0.94rem;
+  line-height: 1.7;
+}

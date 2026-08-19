@@ -1,0 +1,60 @@
+<section id="projects" class="section projects">
+  <div class="shell">
+    <div class="section-head">
+      <p class="eyebrow">Projets</p>
+      <h2 class="section-title">Chaque projet, une tournee</h2>
+      <p class="section-lede">
+        L'anneau sur chaque carte indique l'avancement du projet — d'un
+        concept explore a une plateforme livree en production, comme les
+        tours d'une tontine qui progressent vers leur terme.
+      </p>
+    </div>
+
+    <div class="projects__filters" role="tablist" aria-label="Filtrer les projets">
+      @for (f of filters; track f.key) {
+        <button
+          type="button"
+          role="tab"
+          class="projects__filter"
+          [class.projects__filter--active]="filter() === f.key"
+          [attr.aria-selected]="filter() === f.key"
+          (click)="setFilter(f.key)"
+        >{{ f.label }}</button>
+      }
+    </div>
+
+    <div class="projects__grid">
+      @for (project of visible(); track project.name) {
+        <article class="projects__card">
+          <div class="projects__card-top">
+            <app-ring [size]="46" [progress]="project.progress" />
+            <div>
+              <span class="tag">{{ statusLabel(project.status) }}</span>
+            </div>
+          </div>
+
+          <h3>{{ project.name }}</h3>
+          <p class="projects__tagline">{{ project.tagline }}</p>
+          <p class="projects__desc">{{ project.description }}</p>
+
+          <ul class="projects__stack">
+            @for (tech of project.stack; track tech) {
+              <li>{{ tech }}</li>
+            }
+          </ul>
+
+          @if (project.links?.length) {
+            <div class="projects__links">
+              @for (link of project.links; track link.href) {
+                <a [href]="link.href" target="_blank" rel="noopener">
+                  {{ link.label }}
+                  <app-icon name="external" [size]="13" />
+                </a>
+              }
+            </div>
+          }
+        </article>
+      }
+    </div>
+  </div>
+</section>

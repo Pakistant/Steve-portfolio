@@ -1,0 +1,70 @@
+@use '../../../styles/tokens' as *;
+
+.education__list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--line-soft);
+}
+
+.education__row {
+  display: grid;
+  grid-template-columns: 44px 1fr auto;
+  align-items: center;
+  gap: 1.1rem;
+  padding: 1.4rem 0;
+  border-bottom: 1px solid var(--line-soft);
+  transition: background 0.2s var(--ease);
+
+  &:hover {
+    background: var(--bg-raised);
+  }
+}
+
+.education__row--current {
+  .education__icon {
+    background: rgba(230, 168, 57, 0.14);
+    color: var(--gold-soft);
+  }
+}
+
+.education__icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--bg-raised-2);
+  color: var(--text-muted);
+  display: grid;
+  place-items: center;
+}
+
+.education__info {
+  h3 {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  p {
+    margin-top: 0.25rem;
+    color: var(--text-muted);
+    font-size: 0.88rem;
+  }
+}
+
+.education__period {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-faint);
+  white-space: nowrap;
+}
+
+@media (max-width: 560px) {
+  .education__row {
+    grid-template-columns: 36px 1fr;
+  }
+  .education__period {
+    grid-column: 2;
+    padding-left: 0;
+  }
+}
