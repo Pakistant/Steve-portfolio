@@ -11,9 +11,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(400).json({ message: 'Tous les champs sont requis.' });
   }
 
-  const BREVO_API_KEY = process.env.BREVO_API_KEY;
-  const TO_EMAIL = process.env.BREVO_TO_EMAIL || 'stdouanla@gmail.com';
-  const FROM_EMAIL = process.env.BREVO_FROM_EMAIL || TO_EMAIL;
+  const BREVO_API_KEY = process.env['BREVO_API_KEY'];
+  const TO_EMAIL = process.env['BREVO_TO_EMAIL'] || 'stdouanla@gmail.com';
+  const FROM_EMAIL = process.env['BREVO_FROM_EMAIL'] || TO_EMAIL;
 
   if (!BREVO_API_KEY) {
     return res.status(500).json({ message: 'Clé Brevo manquante.' });
