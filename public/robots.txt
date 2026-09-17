@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://steve-tikemene-douanla.com/sitemap.xml

@@ -1,7 +1,7 @@
 <header class="nav" [class.nav--scrolled]="scrolled()">
   <div class="nav__shell shell">
-    <a class="nav__brand" href="#top">
-      <img class="nav__logo" src="assets/image/logo.png" alt="" />
+    <a class="nav__brand" href="#top" aria-label="Retour à l’accueil du portfolio Steve Tikemene Douanla">
+      <img class="nav__logo" src="assets/image/logo.png" alt="Logo Steve Tikemene Douanla" width="36" height="36" />
       <span>
         Steve<em>.</em>Douanla
       </span>
@@ -13,6 +13,7 @@
           [href]="'#' + link.href"
           class="nav__link"
           [class.nav__link--active]="active() === link.href"
+          [attr.aria-current]="active() === link.href ? 'page' : null"
         >{{ link.label }}</a>
       }
     </nav>
@@ -28,7 +29,7 @@
       (click)="toggle()"
       [attr.aria-expanded]="open()"
       aria-controls="mobile-menu"
-      aria-label="Ouvrir le menu"
+      [attr.aria-label]="open() ? 'Fermer le menu' : 'Ouvrir le menu'"
     >
       <app-icon [name]="open() ? 'close' : 'menu'" [size]="22" />
     </button>

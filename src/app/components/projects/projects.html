@@ -28,7 +28,15 @@
         <article #projectCard class="projects__card" [style.--project-index]="$index">
           @if (project.image) {
             <div class="projects__image-wrap">
-              <img class="projects__image" [src]="project.image" [alt]="project.name" />
+              <img
+                class="projects__image"
+                [src]="project.image"
+                [alt]="'Capture du projet ' + project.name"
+                width="800"
+                height="500"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
           }
           <div class="projects__card-top">

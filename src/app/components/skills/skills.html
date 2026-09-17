@@ -52,12 +52,12 @@
           <div class="skills__track">
             @for (tool of topTools; track tool.label) {
               <div class="skills__tool">
-                <img [src]="'assets/image/icon/' + tool.file" [alt]="tool.label" />
+                <img [src]="'assets/image/icon/' + tool.file" [alt]="tool.label" width="56" height="56" loading="lazy" decoding="async" />
               </div>
             }
             @for (tool of topTools; track 'top-duplicate-' + tool.label) {
               <div class="skills__tool" aria-hidden="true">
-                <img [src]="'assets/image/icon/' + tool.file" alt="" />
+                <img [src]="'assets/image/icon/' + tool.file" alt="" width="56" height="56" loading="lazy" decoding="async" />
               </div>
             }
           </div>
@@ -66,12 +66,12 @@
           <div class="skills__track">
             @for (tool of bottomTools; track tool.label) {
               <div class="skills__tool">
-                <img [src]="'assets/image/icon/' + tool.file" [alt]="tool.label" />
+                <img [src]="'assets/image/icon/' + tool.file" [alt]="tool.label" width="56" height="56" loading="lazy" decoding="async" />
               </div>
             }
             @for (tool of bottomTools; track 'bottom-duplicate-' + tool.label) {
               <div class="skills__tool" aria-hidden="true">
-                <img [src]="'assets/image/icon/' + tool.file" alt="" />
+                <img [src]="'assets/image/icon/' + tool.file" alt="" width="56" height="56" loading="lazy" decoding="async" />
               </div>
             }
           </div>

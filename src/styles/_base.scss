@@ -69,9 +69,28 @@ button {
 }
 
 :focus-visible {
-  outline: 2px solid var(--gold);
+  outline: 3px solid var(--gold);
   outline-offset: 3px;
-  border-radius: 2px;
+  border-radius: 4px;
+  box-shadow: 0 0 0 3px rgba(230, 168, 57, 0.2);
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  z-index: 1000;
+  padding: 0.75rem 1rem;
+  border-radius: 999px;
+  background: var(--gold);
+  color: #16130a;
+  font-weight: 700;
+  text-decoration: none;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 1rem;
 }
 
 // ---- layout utilities ------------------------------------------------

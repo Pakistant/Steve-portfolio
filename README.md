@@ -25,6 +25,18 @@ src/app/
 public/assets/cv-steve-tikemene-douanla.pdf  -> CV telechargeable depuis le hero
 ```
 
+## Variables d'environnement
+
+Pour l'envoi du formulaire de contact, ajoute un fichier `.env.local` (ou configure les variables sur Vercel) avec :
+
+```bash
+BREVO_API_KEY=your_brevo_api_key
+BREVO_TO_EMAIL=stdouanla@gmail.com
+BREVO_FROM_EMAIL=stdouanla@gmail.com
+```
+
+Un fichier exemple est disponible dans `.env.example`.
+
 ## Lancer le projet en local
 
 Prerequis : Node.js 20+ (idealement 22) et npm.

@@ -18,10 +18,13 @@
             type="text"
             formControlName="name"
             placeholder="Votre nom"
+            autocomplete="name"
+            aria-invalid="{{ f.name.invalid && f.name.touched ? 'true' : 'false' }}"
+            [attr.aria-describedby]="f.name.invalid && f.name.touched ? 'name-error' : null"
             [class.contact__input--error]="f.name.invalid && f.name.touched"
           />
           @if (f.name.invalid && f.name.touched) {
-            <span class="contact__error">Merci d'indiquer votre nom (2 caracteres minimum).</span>
+            <span id="name-error" class="contact__error" aria-live="polite">Merci d'indiquer votre nom (2 caractères minimum).</span>
           }
         </div>
 
@@ -32,10 +35,13 @@
             type="email"
             formControlName="email"
             placeholder="vous&#64;exemple.com"
+            autocomplete="email"
+            aria-invalid="{{ f.email.invalid && f.email.touched ? 'true' : 'false' }}"
+            [attr.aria-describedby]="f.email.invalid && f.email.touched ? 'email-error' : null"
             [class.contact__input--error]="f.email.invalid && f.email.touched"
           />
           @if (f.email.invalid && f.email.touched) {
-            <span class="contact__error">Merci d'indiquer une adresse email valide.</span>
+            <span id="email-error" class="contact__error" aria-live="polite">Merci d'indiquer une adresse email valide.</span>
           }
         </div>
 
@@ -46,10 +52,13 @@
             type="text"
             formControlName="subject"
             placeholder="Objet de votre message"
+            autocomplete="off"
+            aria-invalid="{{ f.subject.invalid && f.subject.touched ? 'true' : 'false' }}"
+            [attr.aria-describedby]="f.subject.invalid && f.subject.touched ? 'subject-error' : null"
             [class.contact__input--error]="f.subject.invalid && f.subject.touched"
           />
           @if (f.subject.invalid && f.subject.touched) {
-            <span class="contact__error">Merci d'indiquer un sujet.</span>
+            <span id="subject-error" class="contact__error" aria-live="polite">Merci d'indiquer un sujet.</span>
           }
         </div>
 
@@ -60,14 +69,17 @@
             rows="5"
             formControlName="message"
             placeholder="Decrivez votre projet ou votre besoin..."
+            autocomplete="off"
+            aria-invalid="{{ f.message.invalid && f.message.touched ? 'true' : 'false' }}"
+            [attr.aria-describedby]="f.message.invalid && f.message.touched ? 'message-error' : null"
             [class.contact__input--error]="f.message.invalid && f.message.touched"
           ></textarea>
           @if (f.message.invalid && f.message.touched) {
-            <span class="contact__error">Le message doit contenir au moins 500 caracteres.</span>
+            <span id="message-error" class="contact__error" aria-live="polite">Le message doit contenir au moins 10 caractères.</span>
           }
         </div>
 
-        <button type="submit" class="btn btn--primary contact__submit">
+        <button type="submit" class="btn btn--primary contact__submit" aria-label="Envoyer le formulaire de contact">
           <app-icon name="send" [size]="16" />
           Envoyer le message
         </button>
@@ -78,14 +90,14 @@
         </p>
 
         @if (sent()) {
-          <p class="contact__sent">
+          <p class="contact__sent" role="status" aria-live="polite">
             <app-icon name="check" [size]="15" />
-            Votre message a bien ete envoye. Je vous repondrai rapidement.
+            Votre message a bien été envoyé. Je vous répondrai rapidement.
           </p>
         }
 
         @if (error()) {
-          <p class="contact__error contact__error--inline">{{ error() }}</p>
+          <p class="contact__error contact__error--inline" role="alert" aria-live="assertive">{{ error() }}</p>
         }
       </form>
 
