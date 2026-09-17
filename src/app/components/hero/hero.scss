@@ -162,11 +162,11 @@
   object-position: center 18%;
 }
 
-.hero__portrait--logo {
-  object-fit: contain;
-  object-position: center;
-  padding: clamp(2.5rem, 6vw, 4.5rem);
-  background: radial-gradient(circle at center, rgba(244, 180, 60, 0.08), transparent 58%);
+.hero__portrait--profile {
+  object-fit: cover;
+  object-position: center 18%;
+  padding: 0;
+  background: transparent;
 }
 
 .hero__mark-core {
