@@ -23,7 +23,6 @@
         avec un interet particulier pour les outils numeriques qui repondent
         a des besoins concrets au Cameroun et en zone CEMAC.
       </p>
-
       <div class="hero__actions">
         <a class="btn btn--primary" href="#projects">
           Voir mes projets
@@ -43,22 +42,70 @@
           </div>
         }
       </dl>
+
+      <div class="hero__socials">
+        <span class="hero__socials-label">Me joindre</span>
+        <div class="hero__socials-list">
+          @for (social of socials; track social.label) {
+            <a
+              class="hero__social"
+              [href]="social.href"
+              target="_blank"
+              rel="noopener"
+              [attr.aria-label]="social.label"
+              [title]="social.label"
+            >
+              <app-icon [name]="social.icon" [size]="18" />
+            </a>
+          }
+        </div>
+      </div>
     </div>
 
     <div class="hero__mark" aria-hidden="true">
       <div class="hero__mark-ring">
-        <app-ring [size]="240" [progress]="72" [spin]="true" />
+        <app-ring [size]="540" [progress]="80" />
         <div class="hero__mark-core">
-          <span class="hero__mark-kicker">Tour</span>
-          <span class="hero__mark-figure">2026</span>
-          <span class="hero__mark-kicker">ATL Cohort</span>
+          <img
+            class="hero__portrait hero__portrait--logo"
+            src="assets/image/logo.png"
+            alt="Logo Steve Tikemene Douanla"
+          />
         </div>
       </div>
 
-      <span class="hero__chip hero__chip--1">Angular 22</span>
-      <span class="hero__chip hero__chip--2">Signals</span>
-      <span class="hero__chip hero__chip--3">WordPress</span>
-      <span class="hero__chip hero__chip--4">Laravel</span>
+      <span class="hero__chip hero__chip--1">
+        <img src="assets/image/icon/angular.jpg" alt="" />
+        Angular 22
+      </span>
+      <span class="hero__chip hero__chip--2">
+        <img src="assets/image/icon/wordpress.jpg" alt="" />
+        WordPress
+      </span>
+      <span class="hero__chip hero__chip--3">
+        <img src="assets/image/icon/laravel.jpg" alt="" />
+        Laravel
+      </span>
+      <span class="hero__chip hero__chip--4">
+        <img src="assets/image/icon/php.jpg" alt="" />
+        PHP
+      </span>
+      <span class="hero__chip hero__chip--5">
+        <img src="assets/image/icon/html.jpg" alt="" />
+        HTML
+      </span>
+      <span class="hero__chip hero__chip--6">
+        <img src="assets/image/icon/css.jpg" alt="" />
+        CSS
+      </span>
+      <span class="hero__chip hero__chip--7">
+        <img src="assets/image/icon/js.jpg" alt="" />
+        JavaScript
+      </span>
+      <span class="hero__chip hero__chip--8">
+        <img src="assets/image/icon/figma.jpg" alt="" />
+        Figma
+      </span>
     </div>
   </div>
 </section>

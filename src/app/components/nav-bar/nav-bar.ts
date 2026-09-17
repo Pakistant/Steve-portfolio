@@ -1,12 +1,11 @@
 import { Component, HostListener, signal } from '@angular/core';
 import { Icon } from '../../shared/icon/icon';
-import { Ring } from '../../shared/ring/ring';
 import { NAV_LINKS } from '../../core/portfolio-data';
 
 @Component({
   selector: 'app-nav-bar',
   standalone: true,
-  imports: [Icon, Ring],
+  imports: [Icon],
   templateUrl: './nav-bar.html',
   styleUrl: './nav-bar.scss',
 })

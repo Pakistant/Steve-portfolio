@@ -1,7 +1,7 @@
 <header class="nav" [class.nav--scrolled]="scrolled()">
   <div class="nav__shell shell">
     <a class="nav__brand" href="#top">
-      <app-ring [size]="30" [progress]="72" [spin]="true" />
+      <img class="nav__logo" src="assets/image/logo.png" alt="" />
       <span>
         Steve<em>.</em>Douanla
       </span>
@@ -18,7 +18,7 @@
     </nav>
 
     <a class="btn btn--primary nav__cta" href="#contact">
-      Me contacter
+      Disponible pour une mission
       <app-icon name="arrow" [size]="16" />
     </a>
 
@@ -35,11 +35,21 @@
   </div>
 
   @if (open()) {
-    <nav id="mobile-menu" class="nav__mobile" aria-label="Navigation mobile">
-      @for (link of links; track link.href) {
-        <a [href]="'#' + link.href" (click)="close()">{{ link.label }}</a>
-      }
-      <a class="btn btn--primary" href="#contact" (click)="close()">Me contacter</a>
-    </nav>
+    <button class="nav__backdrop" type="button" aria-label="Fermer le menu" (click)="close()"></button>
   }
+
+  <nav
+    id="mobile-menu"
+    class="nav__mobile"
+    [class.nav__mobile--open]="open()"
+    [attr.aria-hidden]="!open()"
+    aria-label="Navigation mobile"
+  >
+    @for (link of links; track link.href) {
+      <a [href]="'#' + link.href" (click)="close()">
+        <app-icon [name]="link.icon" [size]="19" />
+        <span>{{ link.label }}</span>
+      </a>
+    }
+  </nav>
 </header>

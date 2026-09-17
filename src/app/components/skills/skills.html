@@ -2,27 +2,81 @@
   <div class="shell">
     <div class="section-head">
       <p class="eyebrow">Competences</p>
-      <h2 class="section-title">Une boite a outils large, un socle Angular</h2>
+      <h2 class="section-title">Mes competences</h2>
       <p class="section-lede">
-        Du CMS a l'application sur mesure : de quoi couvrir un projet de bout
-        en bout, du cahier des charges a la mise en production.
+        Je transforme vos besoins en solutions web modernes, fonctionnelles et adaptées à votre activité.
       </p>
     </div>
 
-    <div class="skills__grid">
-      @for (group of groups; track group.title) {
-        <div class="skills__card">
-          <div class="skills__icon">
-            <app-icon [name]="group.icon" [size]="18" />
-          </div>
-          <h3>{{ group.title }}</h3>
-          <ul>
-            @for (item of group.items; track item) {
-              <li>{{ item }}</li>
-            }
-          </ul>
+    <div class="skills__carousel">
+      <button
+        class="skills__control skills__control--prev"
+        type="button"
+        aria-label="Competence precedente"
+        (click)="previousSkill()"
+        [disabled]="currentIndex() === 0"
+      >
+        <app-icon name="arrow" [size]="18" />
+      </button>
+
+      <div class="skills__viewport">
+        <div class="skills__grid" [style.transform]="'translateX(-' + slideOffset() + '%)'">
+          @for (group of groups; track group.title) {
+            <div class="skills__card">
+              <div class="skills__icon">
+                <app-icon [name]="group.icon" [size]="18" />
+              </div>
+              <h3>{{ group.title }}</h3>
+              <p>{{ group.description }}</p>
+        
+            </div>
+          }
         </div>
-      }
+      </div>
+
+      <button
+        class="skills__control skills__control--next"
+        type="button"
+        aria-label="Competence suivante"
+        (click)="nextSkill()"
+        [disabled]="currentIndex() >= maxIndex()"
+      >
+        <app-icon name="arrow" [size]="18" />
+      </button>
+    </div>
+
+    <div class="skills__tools">
+      <p class="skills__tools-title">Outils & technologies maitrises</p>
+      <div class="skills__sliders" aria-label="Outils et technologies maitrises">
+        <div class="skills__slider">
+          <div class="skills__track">
+            @for (tool of topTools; track tool.label) {
+              <div class="skills__tool">
+                <img [src]="'assets/image/icon/' + tool.file" [alt]="tool.label" />
+              </div>
+            }
+            @for (tool of topTools; track 'top-duplicate-' + tool.label) {
+              <div class="skills__tool" aria-hidden="true">
+                <img [src]="'assets/image/icon/' + tool.file" alt="" />
+              </div>
+            }
+          </div>
+        </div>
+        <div class="skills__slider skills__slider--reverse">
+          <div class="skills__track">
+            @for (tool of bottomTools; track tool.label) {
+              <div class="skills__tool">
+                <img [src]="'assets/image/icon/' + tool.file" [alt]="tool.label" />
+              </div>
+            }
+            @for (tool of bottomTools; track 'bottom-duplicate-' + tool.label) {
+              <div class="skills__tool" aria-hidden="true">
+                <img [src]="'assets/image/icon/' + tool.file" alt="" />
+              </div>
+            }
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>

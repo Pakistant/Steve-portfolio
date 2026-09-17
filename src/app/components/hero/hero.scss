@@ -89,12 +89,52 @@
   }
 }
 
+.hero__socials {
+  margin-top: 2.4rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.hero__socials-label {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-faint);
+}
+
+.hero__socials-list {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.hero__social {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  color: var(--text-muted);
+  background: var(--bg-raised);
+  transition: border-color 0.2s var(--ease), color 0.2s var(--ease), transform 0.2s var(--ease);
+}
+
+.hero__social:hover {
+  border-color: var(--gold);
+  color: var(--gold-soft);
+  transform: translateY(-2px);
+}
+
 .hero__mark {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 320px;
+  min-height: 580px;
+  --orbit-radius: 285px;
 }
 
 .hero__mark-ring {
@@ -105,30 +145,40 @@
 
 .hero__mark-core {
   position: absolute;
+  width: 500px;
+  height: 500px;
+  overflow: hidden;
+  border: 4px solid var(--bg);
+  border-radius: 50%;
+  background: var(--bg-raised);
+  box-shadow: 0 0 0 1px var(--line-soft), 0 1.5rem 3rem rgba(0, 0, 0, 0.28);
+}
+
+.hero__portrait {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 18%;
+}
+
+.hero__portrait--logo {
+  object-fit: contain;
+  object-position: center;
+  padding: clamp(2.5rem, 6vw, 4.5rem);
+  background: radial-gradient(circle at center, rgba(244, 180, 60, 0.08), transparent 58%);
+}
+
+.hero__mark-core {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 0.15rem;
-  text-align: center;
-}
-
-.hero__mark-kicker {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text-faint);
-}
-
-.hero__mark-figure {
-  font-family: var(--font-display);
-  font-size: 1.55rem;
-  font-weight: 600;
-  color: var(--gold-soft);
+  justify-content: center;
 }
 
 .hero__chip {
   position: absolute;
+  top: 50%;
+  left: 50%;
   font-family: var(--font-mono);
   font-size: 0.74rem;
   padding: 0.4rem 0.75rem;
@@ -137,17 +187,71 @@
   border: 1px solid var(--line);
   color: var(--text-muted);
   white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  animation: hero-chip-orbit 24s linear infinite;
+  animation-delay: calc(var(--orbit-delay) * -1s);
+  will-change: transform;
 }
 
-.hero__chip--1 { top: 6%; left: 2%; }
-.hero__chip--2 { top: 18%; right: -2%; }
-.hero__chip--3 { bottom: 12%; left: -4%; }
-.hero__chip--4 { bottom: 0%; right: 8%; }
+@keyframes hero-chip-orbit {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg) translateX(var(--orbit-radius)) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg) translateX(var(--orbit-radius)) rotate(-360deg);
+  }
+}
+
+.hero__chip img {
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.hero__chip--1 { --orbit-delay: 0; }
+.hero__chip--2 { --orbit-delay: 3; }
+.hero__chip--3 { --orbit-delay: 6; }
+.hero__chip--4 { --orbit-delay: 9; }
+.hero__chip--5 { --orbit-delay: 12; }
+.hero__chip--6 { --orbit-delay: 15; }
+.hero__chip--7 { --orbit-delay: 18; }
+.hero__chip--8 { --orbit-delay: 21; }
 
 @media (max-width: 959px) {
   .hero__mark {
-    min-height: 280px;
+    min-height: clamp(230px, 62vw, 300px);
+    --orbit-radius: 0;
   }
-  .hero__chip--1 { left: 0; }
-  .hero__chip--3 { left: 2%; }
+
+  .hero__mark-ring {
+    position: relative;
+    width: clamp(180px, 58vw, 260px);
+    height: clamp(180px, 58vw, 260px);
+  }
+
+  .hero__mark-ring app-ring {
+    display: none;
+  }
+
+  .hero__mark-core {
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+  }
+
+  .hero__chip {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__chip {
+    animation-play-state: paused;
+  }
 }

@@ -1,18 +1,30 @@
 <footer class="footer">
-  <div class="shell footer__row">
-    <div class="footer__brand">
-      <app-ring [size]="22" [progress]="72" />
-      <span>Steve Tikemene Douanla</span>
+  <div class="shell footer__inner">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <img class="footer__logo" src="assets/image/logo.png" alt="Logo TDS" />
+
+        <div class="footer__identity">
+          <p>Développeur Web &amp; Webmaster</p>
+          <p class="footer__tagline">Je transforme vos idées en expériences web modernes.</p>
+        </div>
+      </div>
+
+      <nav class="footer__nav" aria-label="Navigation du pied de page">
+        @for (link of links; track link.label) {
+          <a [href]="link.href">{{ link.label }}</a>
+        }
+      </nav>
+
+      <div class="footer__meta">
+        <p>Douala, Cameroun</p>
+        <a href="mailto:stdouanla@gmail.com">stdouanla@gmail.com</a>
+      </div>
     </div>
 
-    <nav class="footer__socials" aria-label="Reseaux sociaux">
-      @for (social of socials; track social.label) {
-        <a [href]="social.href" target="_blank" rel="noopener" [attr.aria-label]="social.label">
-          <app-icon [name]="social.icon" [size]="18" />
-        </a>
-      }
-    </nav>
-
-    <p class="footer__note">Developpe avec Angular — Douala, Cameroun — {{ year }}</p>
+    <div class="footer__bottom">
+      <p>© {{ year }} Tikemene Douanla Steve</p>
+      <p>Tous droits réservés.</p>
+    </div>
   </div>
 </footer>

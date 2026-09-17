@@ -2,11 +2,11 @@
   <div class="shell">
     <div class="section-head">
       <p class="eyebrow">Projets</p>
-      <h2 class="section-title">Chaque projet, une tournee</h2>
+      <h2 class="section-title">Des projets concrets, des solutions utiles</h2>
       <p class="section-lede">
-        L'anneau sur chaque carte indique l'avancement du projet — d'un
-        concept explore a une plateforme livree en production, comme les
-        tours d'une tontine qui progressent vers leur terme.
+        Découvrez une sélection de sites web et d’applications que j’ai conçus et développés.
+         Chaque projet répond à un besoin concret et met en œuvre des technologies adaptées à son 
+         contexte.
       </p>
     </div>
 
@@ -25,7 +25,12 @@
 
     <div class="projects__grid">
       @for (project of visible(); track project.name) {
-        <article class="projects__card">
+        <article #projectCard class="projects__card" [style.--project-index]="$index">
+          @if (project.image) {
+            <div class="projects__image-wrap">
+              <img class="projects__image" [src]="project.image" [alt]="project.name" />
+            </div>
+          }
           <div class="projects__card-top">
             <app-ring [size]="46" [progress]="project.progress" />
             <div>
@@ -46,11 +51,27 @@
           @if (project.links?.length) {
             <div class="projects__links">
               @for (link of project.links; track link.href) {
-                <a [href]="link.href" target="_blank" rel="noopener">
+                <a class="projects__link" [href]="link.href" target="_blank" rel="noopener">
                   {{ link.label }}
                   <app-icon name="external" [size]="13" />
                 </a>
               }
+              @if (project.github) {
+                <a class="projects__link projects__link--github" [href]="project.github" target="_blank" rel="noopener">
+                  <app-icon name="github" [size]="15" />
+                  Voir sur GitHub
+                  <app-icon name="external" [size]="13" />
+                </a>
+              }
+            </div>
+          }
+          @if (!project.links?.length && project.github) {
+            <div class="projects__links">
+              <a class="projects__link projects__link--github" [href]="project.github" target="_blank" rel="noopener">
+                <app-icon name="github" [size]="15" />
+                Voir sur GitHub
+                <app-icon name="external" [size]="13" />
+              </a>
             </div>
           }
         </article>

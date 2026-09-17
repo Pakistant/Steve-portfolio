@@ -43,6 +43,7 @@ export class Contact {
   socials = SOCIAL_LINKS;
 
   sent = signal(false);
+  error = signal<string | null>(null);
 
   private fb = new FormBuilder().nonNullable;
 
@@ -57,7 +58,7 @@ export class Contact {
     return this.form.controls;
   }
 
-  submit(): void {
+  async submit(): Promise<void> {
     if (this.form.invalid) {
       this.form.markAllAsTouched();
       return;
@@ -65,21 +66,38 @@ export class Contact {
 
     const { name, email, subject, message } = this.form.getRawValue();
 
-    const body = [
-      `Nom : ${name}`,
-      `Email : ${email}`,
-      '',
-      message,
-    ].join('\n');
+    try {
+      const response = await fetch('/api/brevo', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          subject,
+          message,
+        }),
+      });
 
-    const mailtoUrl =
-      `mailto:${CONTACT_EMAIL}` +
-      `?subject=${encodeURIComponent(subject)}` +
-      `&body=${encodeURIComponent(body)}`;
+      const data = await response.json().catch(() => ({}));
 
-    window.location.href = mailtoUrl;
+      if (!response.ok) {
+        throw new Error(data?.message || 'Erreur lors de l’envoi du message.');
+      }
 
-    this.sent.set(true);
-    this.form.reset();
+      this.sent.set(true);
+      this.error.set(null);
+      this.form.reset();
+    } catch (err) {
+      console.error('Brevo send error:', err);
+      this.sent.set(false);
+      this.error.set(
+        err instanceof Error
+          ? err.message
+          : 'Le message n’a pas pu être envoyé. Merci de réessayer ou de me contacter directement par email.'
+      );
+    }
   }
 }

@@ -13,4 +13,11 @@ import { SOCIAL_LINKS } from '../../core/portfolio-data';
 export class Footer {
   year = new Date().getFullYear();
   socials = SOCIAL_LINKS;
+  links = [
+    { label: 'Accueil', href: '#top' },
+    { label: 'À propos', href: '#about' },
+    { label: 'Compétences', href: '#skills' },
+    { label: 'Projets', href: '#projects' },
+    { label: 'Contact', href: '#contact' },
+  ];
 }

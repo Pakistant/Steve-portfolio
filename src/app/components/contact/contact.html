@@ -63,7 +63,7 @@
             [class.contact__input--error]="f.message.invalid && f.message.touched"
           ></textarea>
           @if (f.message.invalid && f.message.touched) {
-            <span class="contact__error">Le message doit contenir au moins 10 caracteres.</span>
+            <span class="contact__error">Le message doit contenir au moins 500 caracteres.</span>
           }
         </div>
 
@@ -74,14 +74,18 @@
 
         <p class="contact__hint">
           <app-icon name="mail" [size]="13" />
-          Ouvre votre client mail avec le message pre-rempli, a l'adresse stdouanla&#64;gmail.com.
+          Votre message est envoyé directement via Brevo vers stdouanla&#64;gmail.com.
         </p>
 
         @if (sent()) {
           <p class="contact__sent">
             <app-icon name="check" [size]="15" />
-            Votre client mail devrait s'ouvrir avec le message pret a etre envoye.
+            Votre message a bien ete envoye. Je vous repondrai rapidement.
           </p>
+        }
+
+        @if (error()) {
+          <p class="contact__error contact__error--inline">{{ error() }}</p>
         }
       </form>
 

@@ -1,6 +1,7 @@
 import { Component, DestroyRef, OnInit, inject, signal } from '@angular/core';
 import { Icon } from '../../shared/icon/icon';
 import { Ring } from '../../shared/ring/ring';
+import { SOCIAL_LINKS } from '../../core/portfolio-data';
 
 const ROLES = ['Developpeur Angular', 'Integrateur WordPress', 'Webmaster Shopify', 'Concepteur produit'];
 
@@ -17,11 +18,13 @@ export class Hero implements OnInit {
   roles = ROLES;
   roleIndex = signal(0);
   currentRole = signal(ROLES[0]);
+  socials = SOCIAL_LINKS;
+
 
   stats = [
-    { value: '3+', label: 'ans de pratique web' },
-    { value: '8', label: 'sites & apps livres' },
-    { value: '6', label: 'projets ATL 2026' },
+    { value: '5+', label: 'ans d\'expérience web' },
+    { value: '8+', label: 'sites & apps livrés' },
+    { value: '6', label: 'projets en 2026' },
   ];
 
   ngOnInit(): void {
@@ -33,4 +36,5 @@ export class Hero implements OnInit {
 
     this.destroyRef.onDestroy(() => clearInterval(id));
   }
+
 }
